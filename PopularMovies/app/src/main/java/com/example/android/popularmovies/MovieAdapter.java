@@ -68,7 +68,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     /**
      *
-     *  
+     *
      *
      */
     public int getItemCount() {
