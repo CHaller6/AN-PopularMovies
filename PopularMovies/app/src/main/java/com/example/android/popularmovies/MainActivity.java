@@ -26,9 +26,11 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_movies);
 
         // Call method to get data from the movies data base, and store that data in
-        // a list of image items.
+        // a list of image items. This should be done using aSyncTask so as not to take up
+        // CPU cycles from the Main/UI thread.
 
         // Create adapter for the RecyclerView, passing a reference to the image data acquired
         // from the movie database
+        MovieAdapter mAdapter = new MovieAdapter();
     }
 }
