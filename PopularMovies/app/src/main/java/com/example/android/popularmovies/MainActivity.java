@@ -2,6 +2,8 @@ package com.example.android.popularmovies;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Get a reference to the recycler view that displays the movies
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_movies);
+
+        // Create a grid layout manager for the recyclerview to use to display the movie data
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2,
+                LinearLayoutManager.VERTICAL, false);
+        mRecyclerView.setLayoutManager(layoutManager);
 
         // TODO: Call method to get data from the movies data base, and store that data in
         // a list of image items. This should be done using aSyncTask so as not to take up

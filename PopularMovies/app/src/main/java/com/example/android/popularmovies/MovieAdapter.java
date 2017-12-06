@@ -24,8 +24,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
 
+    // =============================================================================================
     /*
-     * This class implements the RecyclerView's ViewHolder class, and acts as a ViewHolder
+     * This sub-class implements the RecyclerView's ViewHolder class, and acts as a ViewHolder
      * to be used to hold and manage individual movie image data that is sent from the MovieAdapter
      * class to a RecyclerView displaying lists of movie poster images.
      */
@@ -40,6 +41,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         }
 
     }
+    // =============================================================================================
+
 
     /**
      *  This method is called when a MovieViewHolder is created and called.
@@ -54,17 +57,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         return null;
     }
 
+
     /**
      *
      *
      * @param holder The view holder that needs to be inflated
-     * @param position The position within the data set that corresponds to data that needs to go in this view holder
+     * @param position The position within the data set that corresponds to data that needs to go
+     *                 in this view holder
      *
      *
      */
     public void onBindViewHolder (MovieViewHolder holder, int position) {
 
     }
+
 
     /**
      *
