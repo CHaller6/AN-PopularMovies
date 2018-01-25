@@ -53,7 +53,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
      */
     public MovieViewHolder onCreateViewHolder (ViewGroup parent, int viewType){
 
-        //TODO: Delete this once method is implemented
+        //TODO: Delete this once the method is implemented
         return null;
     }
 

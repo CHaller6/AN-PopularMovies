@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     // Pointer to the RecyclerView that displays the films on the main activity
     RecyclerView mRecyclerView;
 
+    // The number of columns in the display (aka the number of movies shown from left to right)
+    private final int SPANCOUNT = 2;
 
 
     @Override
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_movies);
 
         // Create a grid layout manager for the recyclerview to use to display the movie data
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 2,
+        GridLayoutManager layoutManager = new GridLayoutManager(this, SPANCOUNT,
                 LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
 
