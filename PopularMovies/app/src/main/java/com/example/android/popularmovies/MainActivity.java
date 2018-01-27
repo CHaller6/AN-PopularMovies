@@ -58,11 +58,15 @@ public class MainActivity extends AppCompatActivity {
             // TODO: Instantiate the object that will take the results from the database
 
 
+            // TODO: Remove this
+            return null;
         }
 
     }
 
     private URL makeMovieDatabaseSearchQuery() {
 
+        //TODO: Remove this
+        return null;
     }
 }
