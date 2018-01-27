@@ -1,10 +1,13 @@
 package com.example.android.popularmovies;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     /*
@@ -41,5 +44,25 @@ public class MainActivity extends AppCompatActivity {
         // Create adapter for the RecyclerView, passing a reference to the image data acquired
         // from the movie database
         MovieAdapter mAdapter = new MovieAdapter();
+    }
+
+    /*
+     * This thread uses AsyncTask to access the most recent movie data from the online movie
+     * database, and then returns it to the main thread.
+     *
+     */
+    public class FetchMovieData extends AsyncTask<URL, Void, String>{
+        @Override
+        protected String doInBackground (URL... params) {
+            URL searchURL = params[0];
+            // TODO: Instantiate the object that will take the results from the database
+
+
+        }
+
+    }
+
+    private URL makeMovieDatabaseSearchQuery() {
+
     }
 }
