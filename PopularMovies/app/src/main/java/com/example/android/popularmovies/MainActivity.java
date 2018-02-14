@@ -44,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
     // The number of columns in the display (aka the number of movies shown from left to right)
     private final int SPANCOUNT = 2;
 
+
+
+    /*
+      ===============================================================================
+      **********************
+      ****** Methods *******
+      **********************
+      ===============================================================================
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         MovieAdapter mAdapter = new MovieAdapter();
     }
 
-    /*
+    /**
      * This thread uses AsyncTask to access the most recent movie data from the online movie
      * database, and then returns it to the main thread.
      *
@@ -83,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
 
     /**
      *
