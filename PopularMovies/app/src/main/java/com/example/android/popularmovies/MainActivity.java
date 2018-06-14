@@ -1,6 +1,5 @@
 package com.example.android.popularmovies;
 
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +7,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import java.net.MalformedURLException;
+import com.example.android.popularmovies.utilities.NetworkUtils;
+
+import org.json.JSONObject;
+
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,23 +22,14 @@ public class MainActivity extends AppCompatActivity {
       ===============================================================================
      */
 
-    // Parameter for the API Key
-    final static String DB_API_KEY = "api_key";
+    // An enum structure to represent the sorting options for the movie database
+    public enum SortMethod {
+        POPULAR, RATED
+    }
 
-    // API Key for the movie database    TODO: Note: This must be removed before any commits!
-    private static final String apiKey = "";
-
-    // Parameter for the sorting method
-    final static String DB_SORT_BY = "sort_by";
-
-    // Value for the sorting method
-    private static String sortMethod = "popularity.desc";
-
-    // The domain portion of the URL request
-    static final String DB_BASE_STANDARD = "https://api.themoviedb.org/3/discover/movie";
-
-    // The domain portion of the URL request for images from the movie database
-    static final String DB_BASE_IMAGE= "";
+    // Represents the sorting option to be used when querying the database. The default value
+    // is POPULAR
+    SortMethod method = SortMethod.POPULAR;
 
     // Pointer to the RecyclerView that displays the films on the main activity
     RecyclerView mRecyclerView;
@@ -66,9 +59,20 @@ public class MainActivity extends AppCompatActivity {
                 LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        // TODO: Call method to get data from the movies data base, and store that data in
-        // a list of image items. This should be done using aSyncTask so as not to take up
+        // Build the URL to be used to retrieve the movie data from the movie database
+        URL query_URL = null;
+        switch(method) {
+            case POPULAR:
+                query_URL = NetworkUtils.makePopularMovieSearchQuery();
+            case RATED:
+                query_URL = NetworkUtils.makeRatedMovieSearchQuery();
+        }
+
+        // TODO: Get data from the movies database, and store that data in
+        // a JSON object. This should be done using aSyncTask so as not to take up
         // CPU cycles from the Main/UI thread.
+        new FetchMovieData().execute(query_URL);
+
 
         // Create adapter for the RecyclerView, passing a reference to the image data acquired
         // from the movie database
@@ -80,43 +84,35 @@ public class MainActivity extends AppCompatActivity {
      * database, and then returns it to the main thread.
      *
      */
-    public class FetchMovieData extends AsyncTask<URL, Void, String>{
+    public class FetchMovieData extends AsyncTask<URL, Void, JSONObject>{
+        /**
+         *
+         * @param params This will contain the URL to retrieve all of the movie data
+         * @return The JSON string (unparsed and in String form) returned from the movie database
+         */
         @Override
-        protected String doInBackground (URL... params) {
+        protected JSONObject doInBackground (URL... params) {
+            // Check to make sure that the input parameter isn't empty
+            if (params.length == 0) {
+                return null;
+            }
             URL searchURL = params[0];
-            // TODO: Instantiate the object that will take the results from the database
+
+            // TODO: Call the network utility class, passing in the URL, and accept the returned data
+            try {
+                String json_movie_response = NetworkUtils.getResponseFromHttpUrl(searchURL);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+
+
 
 
             // TODO: Remove this
             return null;
         }
 
-    }
-
-    /**
-     *
-     * This method builds the URL to send to the popular movies database to retrieve the most
-     * popular movies. It returns this as a URL object.
-     *
-     * TODO: https://api.themoviedb.org/3/discover/movie?api_key=KEY_HERE&sort_by=popularity.desc
-     *
-     */
-    private static URL makePopularMovieSearchQuery() {
-        Uri builtUri = Uri.parse(DB_BASE_STANDARD).buildUpon()
-                .appendQueryParameter(DB_API_KEY, apiKey)
-                .appendQueryParameter(DB_SORT_BY, sortMethod)
-                .build();
-
-        URL url = null;
-        try {
-            url = new URL(builtUri.toString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        //Log.v(TAG, "Built URI " + url);
-
-        return url;
     }
 
 }
