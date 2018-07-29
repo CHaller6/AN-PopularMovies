@@ -78,7 +78,7 @@ public final class NetworkUtils {
      * This method builds the URL to send to the popular movies database to retrieve the most
      * popular movies. It returns this as a URL object.
      *
-     * TODO: https://api.themoviedb.org/3/discover/movie?api_key=KEY_HERE&sort_by=popularity.desc
+     * TODO: https://api.themoviedb.org/3/discover/movie?api_key=KEY_HERE&sort_by=top_rated
      *
      */
     public static URL makeRatedMovieSearchQuery() {
