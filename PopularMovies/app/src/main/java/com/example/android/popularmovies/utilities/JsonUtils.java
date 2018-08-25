@@ -24,7 +24,7 @@ public final class JsonUtils {
      *  Takes a string containing data returned from the movie database, and extracts that
      *  data into a JSONObject.
      */
-    public JSONObject getJSONObjFromString(String data)
+    public static JSONObject getJSONObjFromString(String data)
         throws JSONException {
 
         //TODO: Try-Catch a JSON exception in case the JSONObject chokes on 'data'
@@ -38,7 +38,7 @@ public final class JsonUtils {
      * Takes a JSONObject containing data returned from the movie database, and extracts the
      * content of the "results" fields into a JSONArray.
      */
-    public JSONArray getResultsFromJSONObject(JSONObject object)
+    public static JSONArray getResultsFromJSONObject(JSONObject object)
         throws JSONException {
         //TODO: Try-Catch a JSON exception in case the JSONObject chokes on 'data'
         JSONArray results = object.getJSONArray("results");
@@ -48,5 +48,6 @@ public final class JsonUtils {
         
     }
 
+    //TODO: Implement a method to extract a particular requested result within the results JSONArray into it's own JSONObject
 
 }

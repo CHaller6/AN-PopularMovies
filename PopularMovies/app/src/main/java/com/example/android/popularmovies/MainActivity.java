@@ -7,8 +7,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.android.popularmovies.utilities.JsonUtils;
 import com.example.android.popularmovies.utilities.NetworkUtils;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URL;
@@ -79,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
         MovieAdapter mAdapter = new MovieAdapter();
     }
 
+
+
     /**
      * This thread uses AsyncTask to access the most recent movie data from the online movie
      * database, and then returns it to the main thread.
@@ -97,10 +101,11 @@ public class MainActivity extends AppCompatActivity {
                 return null;
             }
             URL searchURL = params[0];
+            String movie_response_string;
 
             // TODO: Call the network utility class, passing in the URL, and accept the returned data
             try {
-                String json_movie_response = NetworkUtils.getResponseFromHttpUrl(searchURL);
+                movie_response_string = NetworkUtils.getResponseFromHttpUrl(searchURL);
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
@@ -108,8 +113,14 @@ public class MainActivity extends AppCompatActivity {
 
             /* TODO: Take the contents returned from the movie database and put them in
                a JSON Object */
+            try {
+                JSONObject movie_response_json_object = JsonUtils.
+                        getJSONObjFromString(movie_response_string);
+            } catch (JSONException e) {
+                /* TODO: Print the JSON exception to output or popup a toast with the exception
+                   and return */
 
-
+            }
 
 
 
