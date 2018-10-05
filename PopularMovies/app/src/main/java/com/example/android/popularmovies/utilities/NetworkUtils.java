@@ -2,6 +2,8 @@ package com.example.android.popularmovies.utilities;
 
 import android.net.Uri;
 
+import com.example.android.popularmovies.R;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -26,7 +28,7 @@ public final class NetworkUtils {
 
     // API Key for the movie database
     // TODO: Note: This must be removed before any commits!
-    private static final String apiKey = "";
+    private static final String apiKey = String.valueOf(R.string.movie_api_key);
 
     // Parameter for the sorting method
     final static String DB_SORT_BY = "sort_by";
