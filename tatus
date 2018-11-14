@@ -1,0 +1,21 @@
+[33m41294a7[m Change appcompat, recyclerview, buildSDK, and targetSDK to API 28
+[33mdedd32c[m Comment out picasso gradle dependency until a solution to Program Type Error can be found.
+[33m0c609bf[m Update Gradle method compile to implementation, and change target SDK from 25 to 26
+[33mfa58169[m Call the JSON utilities from the main activity to allow the JSON string received from the Movie database to be converted into JSON-usable format.
+[33m7f96ed7[m Implement the method in the JSON handling utility class to create a JSON object from a JSON string that comes back from the database, as well as the method to extract the results field of the JSONObject into a JSONArray for further use
+[33m4999bcf[m Begin adding a JSON utility class for handling returned JSON strings from the movie database server
+[33m97a8838[m Add helper library for Networking, build the URL to get the initial movie data, and make the call to the movie database.
+[33m8aca0ae[m Quick fix to some comments
+[33m083e8dc[m Add functionality to build URL to request popular movies from the DB
+[33mfa8aa36[m Add some functionality to the AsyncTask and prepare to make request of the movie database.
+[33mf470cd3[m Start subclass for AsyncTask and add Picasso image rendering library
+[33mfdacee0[m Random additions
+[33mb805b95[m Add modified mix.xml from the .idea project folder
+[33m3f247be[m Change gradle.properties file to reduce JVM memory size to 1024m
+[33m87365f0[m Create a grid layout manager for the recycler view, and attach it to the recycler view.
+[33ma6e0b1e[m Update config and gradle files following Android Studio update
+[33m8e683bf[m Follow up to the previous commit
+[33mb275f6a[m Add some documentation to describe methods and subclasses in the MovieAdapter class
+[33m118bb40[m Create project for PopularMovies; Add framework for the RecyclerView to display the movies on the main activity
+[33mf93c4a7[m Create new child activity
+[33me7ab097[m Create Android Studio project for Popular Movies - Stage 1"

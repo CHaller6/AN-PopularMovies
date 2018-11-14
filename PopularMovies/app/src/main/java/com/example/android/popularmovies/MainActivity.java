@@ -3,7 +3,6 @@ package com.example.android.popularmovies;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -56,10 +55,23 @@ public class MainActivity extends AppCompatActivity {
         // Get a reference to the recycler view that displays the movies
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_movies);
 
+        //TODO: Comment out the GridLayoutMAnager and try a LinearLayoutManager to see if the
+        // RecyclerView appears on the screen.
+        // Edit: Tested this, and just like the GridLayoutManager, the screen showed up blanks. It may need some
+        //       data supplied first in order for the RecyclerView to render anything on the UI.
+        LinearLayoutManager tempLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,
+                false);
+        mRecyclerView.setLayoutManager(tempLayoutManager);
+
+        /*
         // Create a grid layout manager for the recyclerview to use to display the movie data
         GridLayoutManager layoutManager = new GridLayoutManager(this, SPANCOUNT,
                 LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
+        */
+
+        //TODO: Consider initially populaying the RecyclerView with dummy data to make sure that the
+        // LayoutManager is working properly (i.e. displaying the data on the UI)
 
         // Build the URL to be used to retrieve the movie data from the movie database
         URL query_URL = null;
