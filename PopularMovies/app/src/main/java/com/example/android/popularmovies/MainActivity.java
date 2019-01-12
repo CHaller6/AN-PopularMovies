@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         // Get a reference to the recycler view that displays the movies
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_movies);
 
-        //TODO: Comment out the GridLayoutMAnager and try a LinearLayoutManager to see if the
+        //TODO: Comment out the GridLayoutManager and try a LinearLayoutManager to see if the
         // RecyclerView appears on the screen.
         // Edit: Tested this, and just like the GridLayoutManager, the screen showed up blanks. It may need some
         //       data supplied first in order for the RecyclerView to render anything on the UI.
@@ -70,16 +70,13 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager);
         */
 
-        //TODO: Consider initially populaying the RecyclerView with dummy data to make sure that the
-        // LayoutManager is working properly (i.e. displaying the data on the UI)
-
         // Build the URL to be used to retrieve the movie data from the movie database
         URL query_URL = null;
         switch(method) {
             case POPULAR:
-                query_URL = NetworkUtils.makePopularMovieSearchQuery();
+                query_URL = NetworkUtils.makePopularMovieSearchQuery(getString(R.string.movie_api_key));
             case RATED:
-                query_URL = NetworkUtils.makeRatedMovieSearchQuery();
+                query_URL = NetworkUtils.makeRatedMovieSearchQuery(getString(R.string.movie_api_key));
         }
 
         // TODO: Get data from the movies database, and store that data in

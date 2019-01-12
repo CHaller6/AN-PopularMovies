@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
-
     /**
      * Constructor for creating a new MovieAdapter
      */

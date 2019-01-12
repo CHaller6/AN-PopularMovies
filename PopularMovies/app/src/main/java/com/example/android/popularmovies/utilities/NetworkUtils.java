@@ -1,8 +1,7 @@
 package com.example.android.popularmovies.utilities;
 
 import android.net.Uri;
-
-import com.example.android.popularmovies.R;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,8 +26,8 @@ public final class NetworkUtils {
     final static String DB_API_KEY = "api_key";
 
     // API Key for the movie database
-    // TODO: Note: This must be removed before any commits!
-    private static final String apiKey = String.valueOf(R.string.movie_api_key);
+    // TODO: DEPRECATED.   Note: This must be removed before any commits!
+    private static final String apiKey = null;
 
     // Parameter for the sorting method
     final static String DB_SORT_BY = "sort_by";
@@ -56,9 +55,17 @@ public final class NetworkUtils {
      * TODO: https://api.themoviedb.org/3/discover/movie?api_key=KEY_HERE&sort_by=popularity.desc
      *
      */
-    public static URL makePopularMovieSearchQuery() {
+    public static URL makePopularMovieSearchQuery(String api_Key) {
+        // Check to make sure that the input API key isn't empty. If it is, return to the caller
+        // and log the error in the log output.
+        if (api_Key.isEmpty()) {
+            Log.e("NetworkUtils.java", "The API Key for the movie database was found to be " +
+                    "empty!");
+            return null;
+        }
+
         Uri builtUri = Uri.parse(DB_BASE_STANDARD).buildUpon()
-                .appendQueryParameter(DB_API_KEY, apiKey)
+                .appendQueryParameter(DB_API_KEY, api_Key)
                 .appendQueryParameter(DB_SORT_BY, SORT_POP)
                 .build();
 
@@ -72,7 +79,7 @@ public final class NetworkUtils {
         //Log.v(TAG, "Built URI " + url);
 
         return url;
-    }
+    } // End of makePopularMovieSearchQuery() method
 
 
     /**
@@ -83,9 +90,17 @@ public final class NetworkUtils {
      * TODO: https://api.themoviedb.org/3/discover/movie?api_key=KEY_HERE&sort_by=top_rated
      *
      */
-    public static URL makeRatedMovieSearchQuery() {
+    public static URL makeRatedMovieSearchQuery(String api_Key) {
+        // Check to make sure that the input API key isn't empty. If it is, return to the caller
+        // and log the error in the log output.
+        if (api_Key.isEmpty()) {
+            Log.e("NetworkUtils.java", "The API Key for the movie database was found to be " +
+                    "empty!");
+            return null;
+        }
+
         Uri builtUri = Uri.parse(DB_BASE_STANDARD).buildUpon()
-                .appendQueryParameter(DB_API_KEY, apiKey)
+                .appendQueryParameter(DB_API_KEY, api_Key)
                 .appendQueryParameter(DB_SORT_BY, SORT_RATED)
                 .build();
 
@@ -99,7 +114,7 @@ public final class NetworkUtils {
         //Log.v(TAG, "Built URI " + url);
 
         return url;
-    }
+    } // End of makeRatedMovieSearchQuery() method.
 
 
     /**
@@ -127,10 +142,11 @@ public final class NetworkUtils {
             } else {
                 return null;
             }
-        } finally {
+        } //TODO: Add a catch exception here when the server cannot be contacted.
+        finally {
             urlConnection.disconnect();
         }
-    }
+    } // End of getResponseFromHttpUrl method
 
 
 
