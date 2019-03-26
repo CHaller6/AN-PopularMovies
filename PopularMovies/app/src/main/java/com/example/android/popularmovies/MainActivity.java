@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
     // An enum structure to represent the sorting options for the movie database
-    public enum SortMethod {
+    private enum SortMethod {
         POPULAR, RATED
     }
 
