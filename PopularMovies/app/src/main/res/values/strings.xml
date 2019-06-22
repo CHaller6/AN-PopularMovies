@@ -3,4 +3,7 @@
 
     <!--TODO: Remove the value of this string before every GIT commit or publishing! -->
     <string name="movie_api_key"></string>
+
+    <string name="sort_popular">Sort by Popularity</string>
+    <string name="sort_rated">Sort by Rating</string>
 </resources>

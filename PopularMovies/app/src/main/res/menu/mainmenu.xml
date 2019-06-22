@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="sortMenu"
+        android:title="Sort Options"
+        >
+        <menu>
+            <item
+                android:id="@+id/sort_popular"
+                android:title="@string/sort_popular"
+                android:showAsAction="ifRoom"/>
+            <item
+                android:id="@+id/sort_rated"
+                android:title="@string/sort_rated"/>
+        </menu>
+    </item>
+</menu>
